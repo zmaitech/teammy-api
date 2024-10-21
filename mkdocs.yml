@@ -1,0 +1,30 @@
+site_name: Teammy API
+
+theme:
+  name: "material"
+
+plugins:
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: false
+
+nav:
+  - Index: index.md
+  - How-To Guides:
+    - guides/how-to-guides.md
+    - guides/plugin-example.md
+  - Reference:
+    - Overview: reference/reference.md
+    - Data:
+      - reference/data/data-packet.md
+      - reference/data/meeting-metadata.md
+    - Engine:
+      - reference/engine/llm-provider.md
+      - reference/engine/persistence-provider.md
+      - reference/engine/meeting-engine.md
+    - Plugin:
+      - reference/plugin/plugin-config.md
+      - reference/plugin/in-call-plugin-metadata.md
+      - reference/plugin/in-call-plugin.md
