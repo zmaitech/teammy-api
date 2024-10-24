@@ -1,0 +1,1108 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../plugin-example/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>Implement Plugin Using Teammy API - Teammy API</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#implement-plugin-using-teammy-api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Teammy API" class="md-header__button md-logo" aria-label="Teammy API" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Teammy API
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Implement Plugin Using Teammy API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Teammy API" class="md-nav__button md-logo" aria-label="Teammy API" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Teammy API
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    How-To Guides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            How-To Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Implement Plugin Using Teammy API
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Implement Plugin Using Teammy API
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview-of-the-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of the API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step-by-Step Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-setting-up-the-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Setting Up the Environment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-define-plugin-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Define Plugin Metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-implement-plugin-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Implement Plugin Class
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Implement Plugin Class">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-retrieve-plugin-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Retrieve Plugin Metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-handle-lifecycle-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Handle Lifecycle Events
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-define-data-receive-hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Define Data Receive Hooks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-manage-meeting-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 Manage Meeting Events
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-utilize-meeting-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Utilize Meeting Engine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Utilize Meeting Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-llmprovider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using LLMProvider
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-persistenceprovider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using PersistenceProvider
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plugin-example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plugin Implementation Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/data/data-packet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DataPacket
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/data/meeting-metadata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MeetingMetadata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Engine
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Engine
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/engine/llm-provider/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LLMProvider
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/engine/persistence-provider/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PersistenceProvider
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/engine/meeting-engine/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MeetingEngine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Plugin
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Plugin
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/plugin/plugin-config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PluginConfig
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/plugin/in-call-plugin-metadata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    InCallPluginMetadata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/plugin/in-call-plugin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    InCallPlugin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview-of-the-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of the API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step-by-Step Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step-by-Step Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-setting-up-the-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Setting Up the Environment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-define-plugin-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Define Plugin Metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-implement-plugin-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Implement Plugin Class
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Implement Plugin Class">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-retrieve-plugin-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Retrieve Plugin Metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-handle-lifecycle-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Handle Lifecycle Events
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-define-data-receive-hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Define Data Receive Hooks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-manage-meeting-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 Manage Meeting Events
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-utilize-meeting-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Utilize Meeting Engine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Utilize Meeting Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-llmprovider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using LLMProvider
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-persistenceprovider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using PersistenceProvider
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="implement-plugin-using-teammy-api">Implement Plugin Using Teammy API</h1>
+<h2 id="introduction">Introduction</h2>
+<p>This guide provides step-by-step instructions on how to implement plugins using the Teammy API. It covers everything from setting up your environment to integrating and testing your plugins.</p>
+<h2 id="overview-of-the-api">Overview of the API</h2>
+<p>For a comprehensive overview of Teammy API, visit the <a href="../../reference/reference/">Overview</a> page.</p>
+<h2 id="step-by-step-instructions">Step-by-Step Instructions</h2>
+<p>Teammy plugins are built as packages that are injected into the Teammy runtime. The plugin itself can use available VPC resources through the Teammy API, which is dependency injected at runtime. The available Teammy API package is used as a stub for local development.</p>
+<h3 id="step-1-setting-up-the-environment">Step 1: Setting Up the Environment</h3>
+<p>Initialize the repository using a Python package manager. We recommend <code>poetry</code>.</p>
+<pre><code class="language-bash">poetry init
+</code></pre>
+<p>The package should be named <code>plugin</code> so it can be properly runtime injected.</p>
+<pre><code class="language-toml">[tool.poetry]
+name = &quot;plugin&quot;
+</code></pre>
+<p>Add Teammy API dependency to <code>pyproject.toml</code> as a development dependency:</p>
+<pre><code class="language-toml">[tool.poetry.group.dev.dependencies]
+teammy = { git = &quot;https://bitbucket.org/zmaitech/teammy-stub.git&quot;, branch = &quot;main&quot; }
+</code></pre>
+<p>This is a stub dependency and will be replaced during runtime. It allows developers to test the plugin locally.</p>
+<h3 id="step-2-define-plugin-metadata">Step 2: Define Plugin Metadata</h3>
+<p>Each plugin must define its metadata, such as the name, version, and data sources it will consume. This is done by implementing the <a href="../../reference/plugin/in-call-plugin-metadata/"><code>InCallPluginMetadata</code></a> class.</p>
+<p>Define a class for your plugin metadata that includes:</p>
+<ul>
+<li><strong>Plugin name</strong>: A unique name to identify the plugin.</li>
+<li><strong>Version</strong>: The version string for your plugin.</li>
+<li><strong>Data sources</strong>: A list of data sources that your plugin will consume.</li>
+<li><strong>Plugin config</strong>: A configuration object specific to your plugin.</li>
+</ul>
+<h3 id="step-3-implement-plugin-class">Step 3: Implement Plugin Class</h3>
+<p>The main plugin functionality is implemented in a class that inherits from <a href="../../reference/plugin/in-call-plugin/"><code>InCallPlugin</code></a>. This class will manage various lifecycle events and data handling.
+Each plugin package should implement only one <a href="../../reference/plugin/in-call-plugin/"><code>InCallPlugin</code></a> class.</p>
+<p><strong>Important:</strong> The <a href="../../reference/plugin/in-call-plugin/"><code>InCallPlugin</code></a> class must be stateless, and all state management is done through the <a href="../../reference/engine/meeting-engine/"><code>MeetingEngine</code></a>. This ensures that the runtime itself keeps the state shared with other instances of the same plugin, facilitating horizontal scaling.</p>
+<h4 id="31-retrieve-plugin-metadata">3.1 Retrieve Plugin Metadata</h4>
+<p>Plugin must implement the <a href="../../reference/plugin/in-call-plugin/#teammy.api.plugin.InCallPlugin.get_metadata"><code>get_metadata</code></a> method to return an instance of <a href="../../reference/plugin/in-call-plugin-metadata/"><code>InCallPluginMetadata</code></a>.</p>
+<p>This method is called once during the installation of the plugin.</p>
+<h4 id="32-handle-lifecycle-events">3.2 Handle Lifecycle Events</h4>
+<p>Plugins must manage key lifecycle events. These lifecycle events represent different phases in a plugin's operation, such as installation, startup, and shutdown. Handling these events properly ensures that plugins are correctly initialized, execute their tasks efficiently, and release resources when no longer needed.</p>
+<ol>
+<li><strong>Installation Phase</strong><br>
+During the installation phase, the plugin is prepared for deployment. This phase typically occurs when the plugin is being built, such as during the docker build process. Any setup that needs to happen before the plugin is deployed should be handled here.
+To define what happens during installation, implement the <a href="../../reference/plugin/in-call-plugin/#teammy.api.plugin.InCallPlugin.on_install"><code>on_install</code></a> method.</li>
+<li><strong>Startup Phase</strong><br>
+Once the plugin is deployed, the startup phase occurs. During this phase, the plugin initializes itself and prepares to handle its tasks. This is the time to set up connections, prepare resources, and ensure the plugin is ready to start processing data.
+To manage the initialization tasks, implement the <a href="../../reference/plugin/in-call-plugin/#teammy.api.plugin.InCallPlugin.on_startup"><code>on_startup</code></a> method.</li>
+<li><strong>Shutdown Phase</strong><br>
+When the plugin is no longer needed or the container is gracefully stopped, the shutdown phase is triggered. In this phase, the plugin should release resources, disconnect from any external services, and perform cleanup tasks to ensure a smooth shutdown.
+To handle resource cleanup, implement the <a href="../../reference/plugin/in-call-plugin/#teammy.api.plugin.InCallPlugin.on_shutdown"><code>on_shutdown</code></a> method.</li>
+</ol>
+<h4 id="33-define-data-receive-hooks">3.3 Define Data Receive Hooks</h4>
+<p>The plugin must define hooks for specific data sources it consumes, such as audio or transcription. These hooks are responsible for processing incoming <a href="../../reference/data/data-packet/"><code>DataPacket</code></a> objects.
+The data inside the packet may be any object that should be parsed.</p>
+<ul>
+<li>Implement the <a href="../../reference/plugin/in-call-plugin/#teammy.api.plugin.InCallPlugin.get_data_receive_hooks"><code>get_data_receive_hooks</code></a> method to return a dictionary that maps the data types your plugin consumes to their respective handler functions.</li>
+<li>Each handler function should be an asynchronous method that accepts a <a href="../../reference/data/data-packet/"><code>DataPacket</code></a> and <a href="../../reference/engine/meeting-engine/"><code>MeetingEngine</code></a> as parameters.</li>
+<li>
+<p>The result of a hook, if it does not return <code>None</code>, will be exposed as a consumable type to the rest of the system. For example, if a plugin named <code>llm-action</code> (as defined in the config) processes data, it will produce a JSON result of a <code>llm-action</code>. This result is then pushed to the data stream for other components or plugins to consume.</p>
+</li>
+<li>
+<p>The result can be any serializable object, such as:</p>
+<ul>
+<li>bytearray</li>
+<li>string</li>
+<li>JSON-serializable object</li>
+<li>Pydantic object (which can be serialized using model_dump(type=json))</li>
+</ul>
+</li>
+</ul>
+<p><strong>Important</strong>: Each plugin may consume multiple data sources, but it only produces one output. This output is distinguished by the plugin name, as defined in the configuration.</p>
+<h4 id="34-manage-meeting-events">3.4 Manage Meeting Events</h4>
+<p>When a plugin is assigned to a meeting, it must respond to specific meeting events, such as when the meeting starts or ends. These events trigger the <a href="../../reference/plugin/in-call-plugin/#teammy.api.plugin.InCallPlugin.on_meeting_start"><code>on_meeting_start</code></a> and <a href="../../reference/plugin/in-call-plugin/#teammy.api.plugin.InCallPlugin.on_meeting_end"><code>on_meeting_end</code></a> methods.</p>
+<ul>
+<li>At the start of the meeting, the hook is subscribed to the data stream, and incoming data will be processed as <a href="../../reference/data/data-packet/"><code>DataPacket</code></a> objects. Implement the <a href="../../reference/plugin/in-call-plugin/#teammy.api.plugin.InCallPlugin.on_meeting_start"><code>on_meeting_start</code></a> method to handle any initialization tasks when the meeting starts.</li>
+<li>At the end of the meeting, the hook is unsubscribed from the data stream. Implement the <a href="../../reference/plugin/in-call-plugin/#teammy.api.plugin.InCallPlugin.on_meeting_end"><code>on_meeting_end</code></a> method to handle cleanup tasks when the meeting ends.</li>
+</ul>
+<h3 id="step-4-utilize-meeting-engine">Step 4: Utilize Meeting Engine</h3>
+<p>The <a href="../../reference/engine/meeting-engine/"><code>MeetingEngine</code></a> provides a singleton instance that serves as the primary interaction point with the core system. It manages LLM access and data persistence, acting as the bridge between your plugin and the rest of the system.</p>
+<p><strong>Note:</strong> The only point of access to the rest of the VPC (Virtual Private Cloud) is through the <a href="../../reference/engine/meeting-engine/"><code>MeetingEngine</code></a>. The <a href="../../reference/engine/meeting-engine/"><code>MeetingEngine</code></a> is used for persistence and LLM (Large Language Model) access. In the future, more features will be available.</p>
+<h4 id="using-llmprovider">Using LLMProvider</h4>
+<p>The <a href="../../reference/engine/llm-provider/"><code>LLMProvider</code></a> class is your entry point for interacting with the LLM (Large Language Model). You can use it to send prompts and retrieve responses.</p>
+<p>For example, if your plugin involves analyzing conversation data, you can send parts of the conversation to the LLM for summarization or analysis.</p>
+<p>See the reference for <a href="../../reference/engine/llm-provider/">LLMProvider</a>.</p>
+<h4 id="using-persistenceprovider">Using PersistenceProvider</h4>
+<p>The <a href="../../reference/engine/persistence-provider/"><code>PersistenceProvider</code></a> class allows your plugin to maintain state across executions. You can use it to store and retrieve data related to the meeting, such as chat history or meeting artifacts.</p>
+<p>It is particularly useful for long-running sessions where you need to preserve data between different phases of the plugin lifecycle.</p>
+<p>See the reference for <a href="../../reference/engine/persistence-provider/">PersistenceProvider</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
