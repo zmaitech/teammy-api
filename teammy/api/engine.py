@@ -45,13 +45,17 @@ class LLMProvider:
         messages: list[dict],
         temperature: float,
     ):
-        """Sends a prompt to the LLM using the fast_prompt method.
+        """Sends a prompt to the LLM and returns the generated response.
 
         Args:
-            messages: A list of messages to send to the model.
-            temperature: Sampling temperature to use for the response.
+            messages: A list of messages to send to the model
+            temperature: Sampling temperature to use for the response
         """
-        return await self.fast_prompt(messages, temperature)
+        await self._init_client()
+        res = await self.client.chat.completions.create(
+            messages=messages, temperature=temperature, model="gpt-4o"
+        )
+        return res.choices[0].message.content
 
 
 class PersistenceProvider:
