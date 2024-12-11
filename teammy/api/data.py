@@ -1,6 +1,9 @@
 import datetime
 from dataclasses import dataclass
 
+from pydantic import BaseModel
+
+
 # TODO: rename to execution metadata
 @dataclass
 class MeetingMetadata:
@@ -10,6 +13,7 @@ class MeetingMetadata:
         meeting_id: Meeting ID
         plugin_name: Plugin name
     """
+
     meeting_id: str
     plugin_name: str
 
@@ -21,8 +25,15 @@ class DataPacket:
     Attributes:
         timestamp: Data packet timestamp
         meeting_metadata: Meeting metadata object
-        data: Data object
+        data: Data object derived from BaseModel
     """
+
     timestamp: datetime.datetime
     meeting_metadata: MeetingMetadata
-    data: object
+    data: BaseModel
+
+
+class PluginState(BaseModel):
+    """Represents a plugin state as a Pydantic model."""
+
+    pass

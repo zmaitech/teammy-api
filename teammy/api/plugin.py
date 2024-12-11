@@ -1,9 +1,11 @@
 from abc import ABC, abstractmethod
 from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Awaitable
+from typing import Awaitable, Tuple
 
-from teammy.api.data import DataPacket, MeetingMetadata
+from pydantic import BaseModel
+
+from teammy.api.data import DataPacket, MeetingMetadata, PluginState
 from teammy.api.engine import MeetingEngine
 
 
@@ -81,7 +83,9 @@ class InCallPlugin(ABC):
         """
         pass
 
-    HookFunction = Callable[[DataPacket, MeetingEngine], Awaitable[object]]
+    HookFunction = Callable[
+        [DataPacket, MeetingEngine, PluginState], Awaitable[Tuple[BaseModel, BaseModel]]
+    ]
 
     @classmethod
     @abstractmethod
@@ -89,7 +93,8 @@ class InCallPlugin(ABC):
         """Define hooks for receiving data types.
 
         This is called once per meeting to fetch handlers for the declared data types the plugin consumes.
-        The handlers should be defined as async functions that accept a DataPacket and the MeetingEngine.
+        The handlers should be defined as async functions that accept a DataPacket, MeetingEngine and PluginState,
+        and return a tuple containing output and state objects, both derived from BaseModel.
 
         Returns:
             Dictionary containing data types and respective handler functions.
