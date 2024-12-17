@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Awaitable
+from typing import Awaitable, Tuple
 
-from teammy.api.data import DataPacket, MeetingMetadata
+from teammy.api.data import DataPacket, MeetingMetadata, PluginState
 from teammy.api.engine import MeetingEngine
 
 
@@ -81,15 +81,29 @@ class InCallPlugin(ABC):
         """
         pass
 
-    HookFunction = Callable[[DataPacket, MeetingEngine], Awaitable[object]]
+    """
+    Handler requirements:
+    1. Handlers must be defined as async functions.
+    2. Input parameters:
+        - An input object of a class derived from DataPacket.
+        - A plugin state object of a class derived from PluginState.
+        - A MeetingEngine instance.
+    3. Return value:
+        A tuple containing:
+        - An output object of a class derived from DataPacket.
+        - A plugin state object of a class derived from PluginState.
+    """
+    HookFunction = Callable[
+        [DataPacket, PluginState, MeetingEngine],
+        Awaitable[Tuple[DataPacket, PluginState]],
+    ]
 
     @classmethod
     @abstractmethod
     async def get_data_receive_hooks(cls) -> dict[str, HookFunction]:
         """Define hooks for receiving data types.
 
-        This is called once per meeting to fetch handlers for the declared data types the plugin consumes.
-        The handlers should be defined as async functions that accept a DataPacket and the MeetingEngine.
+        This is called once per meeting to fetch handlers for the declared data types the plugin consumes and produces.
 
         Returns:
             Dictionary containing data types and respective handler functions.
